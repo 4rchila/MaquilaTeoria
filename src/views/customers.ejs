@@ -1,0 +1,105 @@
+<%- include('partials/_header') %>
+
+<div class="container mt-5">
+    <!-- Título y Mensaje de Datos -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2 class="text-center text-primary">Product Inventory</h2>
+            <p class="text-center text-muted"><%= data.length > 0 ? 'Showing available products' : 'No data available' %></p>
+        </div>
+    </div>
+
+    <!-- Tabla de Productos -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No.</th>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Unit of Measurement</th>
+                            <th>Supplier</th>
+                            <th>QR Code</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data.length > 0) { %>
+                          <% for (var i = 0; i < data.length; i++) { %>
+                            <tr>
+                              <td><%= i + 1 %></td>
+                              <td><%= data[i].idProduct %></td>
+                              <td><%= data[i].name %></td>
+                              <td><%= data[i].description %></td>
+                              <td><%= data[i].category %></td>
+                              <td><%= data[i].unitof %></td>
+                              <td><%= data[i].supplier %></td>
+                              <td><%= data[i].barcode %></td>
+                              <td>
+                                <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="/update/<%= data[i].id %>" class="btn btn-info btn-sm">Update</a>
+                              </td>
+                            </tr>
+                          <% } %>
+                        <% } else { %>
+                          <tr><td colspan="9" class="text-center">No data available</td></tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Formulario de Agregar Producto -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Add New Product</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/add" method="post">
+                        <div class="form-group">
+                            <label for="idProduct">Product ID</label>
+                            <input type="text" name="idProduct" id="idProduct" placeholder="Enter Product ID" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Product Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter Product Name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" name="description" id="description" placeholder="Enter Description" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input type="text" name="category" id="category" placeholder="Enter Category" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="unitof">Unit of Measurement</label>
+                            <input type="text" name="unitof" id="unitof" placeholder="Enter Unit of Measurement" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier">Supplier</label>
+                            <input type="text" name="supplier" id="supplier" placeholder="Enter Supplier" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="barcode">QR Code</label>
+                            <input type="text" name="barcode" id="barcode" placeholder="Enter QR Code" class="form-control" required>
+                        </div>
+                        
+                        <!-- Espacio adicional para el botón -->
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-success btn-block">Save to Inventory</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/_footer') %>
+

@@ -2,19 +2,22 @@
 CREATE DATABASE maquilaSistemaMysql;
 
 -- to use database
-use maquilaSistemaMysql;
+USE maquilaSistemaMysql;
 
 -- creating a new table
 CREATE TABLE customer (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  address VARCHAR(100) NOT NULL,
-  phone VARCHAR(15)
+  idProduct VARCHAR(50) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  description VARCHAR(100),
+  category VARCHAR(100) NOT NULL,
+  unitof VARCHAR(50) NOT NULL,
+  supplier VARCHAR(100) NOT NULL,
+  barcode VARCHAR(50)
 );
 
-
 -- to show all tables
-show tables;
+SHOW TABLES;
 
 -- to describe table
-describe customer;
+DESCRIBE customer;
