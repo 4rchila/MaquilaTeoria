@@ -40,8 +40,8 @@
                               <td><%= data[i].supplier %></td>
                               <td><%= data[i].barcode %></td>
                               <td>
-                                <a href="/delete/<%= data[i].id %>" class="btn btn-danger btn-sm">Delete</a>
-                                <a href="/update/<%= data[i].id %>" class="btn btn-info btn-sm">Update</a>
+                                <a href="/inventario/delete/<%= data[i].id %>" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="/inventario/update/<%= data[i].id %>" class="btn btn-info btn-sm">Update</a>
                               </td>
                             </tr>
                           <% } %>
@@ -60,7 +60,7 @@
                     <h4 class="mb-0">Add New Product</h4>
                 </div>
                 <div class="card-body">
-                    <form action="/add" method="post">
+                    <form action="/inventario/add" method="post">
                         <div class="form-group">
                             <label for="idProduct">Product ID</label>
                             <input type="text" name="idProduct" id="idProduct" placeholder="Enter Product ID" class="form-control" required>

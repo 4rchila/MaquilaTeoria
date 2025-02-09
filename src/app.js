@@ -6,14 +6,18 @@ const myConnection = require('express-myconnection')
 
 const app = express()
 
-//importing routers
+// Importando routers
+const loginRouters = require("./routers/login")
 const customerRouters = require("./routers/customers")
+const homeRouters = require("./routers/home")
+const ventasRouters = require("./routers/ventas")
+
+// Configuración del servidor
 app.set('port', process.env.PORT || 3000)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
-
-// middlewares
+// Middlewares
 app.use(morgan('dev'))
 app.use(myConnection(mysql2, {
     host: 'localhost',
@@ -21,17 +25,20 @@ app.use(myConnection(mysql2, {
     password: 'root',
     port: 3306,
     database: 'maquilasistemamysql'
-
 }, 'single'))
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({ extended: false }))
 
-//routers
-app.use('/', customerRouters)
+// Servir archivos estáticos desde "src/public"
+app.use(express.static(path.join(__dirname, 'src/public')))
 
-//static files
-app.use(express.static(path.join(__dirname, )))
+// Rutas
+app.use('/', loginRouters)
+app.use('/Home', homeRouters)
+app.use('/inventario', customerRouters)  // Asegurar ruta correcta
+app.use('/ventas', ventasRouters)
 
-//starting the server
-app.listen(app.get('port'), ()=>{
-    console.log('server on port 3000')
+// Iniciando el servidor
+app.listen(app.get('port'), () => {
+    console.log('Server on port', app.get('port'))
 })
+

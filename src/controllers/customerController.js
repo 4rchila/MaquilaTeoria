@@ -20,7 +20,7 @@ controller.save = (req, res) => {
     req.getConnection((err, conn) =>{
         conn.query('INSERT INTO customer set ?', [data], (err, customer) =>{
         console.log(customer)
-        res.redirect('/')
+        res.redirect('/inventario')
         })
     })
   };
@@ -40,7 +40,7 @@ controller.delete = (req, res) => {
    const {id} = req.params;
     req.getConnection((err, conn) =>{
         conn.query('DELETE FROM customer WHERE id = ?', [id], (err, rows) =>{
-            res.redirect('/')
+            res.redirect('/inventario')
         })
     })
   };
@@ -50,7 +50,7 @@ controller.delete = (req, res) => {
     const newCustomer = req.body
      req.getConnection((err, conn) =>{
          conn.query('UPDATE customer set ? WHERE id = ?', [newCustomer, id], (err, rows) =>{
-             res.redirect('/')
+             res.redirect('/inventario')
          })
      })
    };
