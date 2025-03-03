@@ -11,6 +11,7 @@ const loginRouters = require("./routers/login")
 const customerRouters = require("./routers/customers")
 const homeRouters = require("./routers/home")
 const ventasRouters = require("./routers/ventas")
+const recursosHumanosRouters = require("./routers/recursosHumanos")
 
 // Configuración del servidor
 app.set('port', process.env.PORT || 3000)
@@ -34,8 +35,9 @@ app.use(express.static(path.join(__dirname, 'src/public')))
 // Rutas
 app.use('/', loginRouters)
 app.use('/Home', homeRouters)
-app.use('/inventario', customerRouters)  // Asegurar ruta correcta
+app.use('/inventario', customerRouters)  
 app.use('/ventas', ventasRouters)
+app.use('/recursosHumanos', recursosHumanosRouters)
 
 // Iniciando el servidor
 app.listen(app.get('port'), () => {

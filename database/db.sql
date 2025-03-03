@@ -5,6 +5,7 @@ CREATE DATABASE maquilaSistemaMysql;
 USE maquilaSistemaMysql;
 
 -- creating a new table
+------------------------------
 CREATE TABLE customer (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   idProduct VARCHAR(50) NOT NULL,
@@ -15,8 +16,30 @@ CREATE TABLE customer (
   supplier VARCHAR(100) NOT NULL,
   barcode VARCHAR(50)
 );
-
+-------------------------------
+CREATE TABLE factura (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  description VARCHAR(100),
+  amount INT(6) NOT NULL,
+  tax VARCHAR(50) NOT NULL,
+  payment method varchar(50) NOT NULL
+);
 -- to show all tables
+
+CREATE TABLE empleados (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    fecha_nacimiento DATE,
+    numero_telefono VARCHAR(15),  
+    cuenta_banco BIGINT,          
+    correo VARCHAR(225) NOT NULL,
+    direccion VARCHAR(225) NOT NULL,
+    salario DECIMAL(10,2),
+    fecha_contratacion DATE
+);
+
+
+--------
 SHOW TABLES;
 
 -- to describe table

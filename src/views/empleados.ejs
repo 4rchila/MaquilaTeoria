@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ventas y Facturación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Roboto', sans-serif;
+            color: #343a40;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+        .card-header {
+            background-color: #343a40;
+            color: #fff;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        .table-container {
+            margin-top: 30px;
+        }
+        .table thead {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 8px;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            border-radius: 8px;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            border-radius: 8px;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        h1, h3 {
+            color: #495057;
+        }
+        .table td, .table th {
+            padding: 15px;
+        }
+        .table tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        .table tbody tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+        .table-container .btn {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center text-primary">Registro de Empleados</h1>
+
+    <!-- Formulario para Registro de Ventas -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4>Registrar Venta</h4>
+        </div>
+        <div class="card-body">
+            <form action="/ventas/add" method="post" onsubmit="setFecha()">
+                <div class="mb-3">
+                    <label for="texto" class="form-label">Nombre</label>
+                    <input type="text" name="nombre" id="cantidad" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="texto" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" name="fecha_nacimiento" id="cantidad" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <label for="numero_telefono" class="form-label">Numero de telefono</label>
+                        <input type="number" name="numero_telefono" id="descripcion" class="form-control" rows="1" required>
+                    </div>
+                    <div class="mb-3">
+                    <label for="cuenta_banco" class="form-label">Numero de cuenta de banco</label>
+                    <input type="number" name="cuenta_banco" id="cantidadPagar" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo electonico</label>
+                    <input type="text" name="correo" id="impuesto" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Direccion</label>
+                    <input type="text" name="direccion" id="impuesto" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Direccion</label>
+                    <input type="text" name="direccion" id="impuesto" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="salario" class="form-label">Direccion</label>
+                    <input type="number" name="salario" id="impuesto" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha_contratacion" class="form-label">Fecha de contratación</label>
+                    <input type="date" name="fecha_contratacion" id="impuesto" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tipo_Cuenta" class="form-label"></label>
+                    <select name="tipo_Cuenta" id="tipo_Cuenta" class="form-select" required>
+                        <option value="ahorro">Ahorro</option>
+                        <option value="monetario">Monetario</option>
+                    </select>
+                </div>
+                <!-- Campo oculto para la fecha -->
+                <input type="hidden" name="empleados" id="empleados">
+                <button type="submit" class="btn btn-success">Registrar Empleado</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de ventas -->
+    <div class="table-container">
+        <h3 class="text-center">Historial de Ventas</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#Factura</th>
+                        <th>Fecha</th>
+                        <th>Nombre del cliente</th>
+                        <th>Nit</th>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Método de Venta</th>
+                        <th>Cantidad a Pagar</th>
+                        <th>Impuesto</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data.length > 0) { %>
+                        <% data.forEach((venta, index) => { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%= venta.fecha || 'No disponible' %></td>
+                                <td><%= venta.nombreCliente %></td>
+                                <td><%= venta.nit %></td>
+                                <td><%= venta.descripcion %></td>
+                                <td><%= venta.cantidadDeProducto %></td>
+                                <td><%= venta.metodo %></td>
+                                <td><%= venta.cantidadPagar %></td>
+                                <td><%= venta.impuesto %></td>
+                                <td><%= (parseFloat(venta.cantidadPagar) + parseFloat(venta.impuesto)).toFixed(2) %></td>
+                                <td>
+                                    <a href="/ventas/delete/<%= venta.id %>" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="/ventas/factura/<%= venta.id %>" class="btn btn-primary btn-sm">Ver Factura</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="9" class="text-center">No hay datos disponibles</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function setFecha() {
+        const fecha = new Date();
+        const fechaFormateada = fecha.toISOString().split('T')[0]; 
+        document.getElementById('fechaVenta').value = fechaFormateada;
+    }
+</script>
+
+</body>
+</html>
+
+
