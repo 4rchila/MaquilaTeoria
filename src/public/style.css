@@ -1,0 +1,205 @@
+/* Estilos generales */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+}
+
+/* Estilos para la barra lateral */
+.sidebar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima para ocupar toda la pantalla */
+    height: auto; /* Ajustar la altura al contenido */
+}
+
+.sidebar .img-fluid {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar .nav-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #34495e;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+/*
+.sidebar .text {
+    /* Estilos para el texto de los enlaces */
+
+.sidebar .logout {
+    bottom: 0;
+    margin-top: auto; /* Empuja el botón de Logout hasta el pie del sidebar */
+    margin-bottom: 20px;
+}
+
+.sidebar .logout a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.sidebar .logout a:hover {
+    background-color: #34495e;
+}
+
+.sidebar .logout i {
+    margin-right: 10px;
+}
+
+/* Estilos para el contenido principal */
+.main-content {
+    padding: 20px;
+}
+
+/* Estilos para la cabecera */
+.input-group {
+    width: 25%;
+}
+
+.input-group .form-control {
+    border-radius: 5px 0 0 5px;
+}
+
+.input-group .btn {
+    border-radius: 0 5px 5px 0;
+    background-color: #3498db;
+    color: white;
+}
+
+.notifications .badge {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    transform: translate(50%, -50%);
+    background-color: #3498DB;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 0.7em;
+    pointer-events: none;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Estilos para las tarjetas de resumen */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card i {
+    font-size: 2em;
+    margin-right: 20px;
+}
+
+.card-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1em;
+    color: #7f8c8d;
+}
+
+.card-content .amount {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-content .trend {
+    font-size: 0.9em;
+    margin: 5px 0 0 0;
+}
+
+.trend.positive {
+    color: #2ecc71;
+}
+
+.trend.negative {
+    color: #e74c3c;
+}
+
+/* Estilos para acciones rápidas */
+.action-buttons .btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.action-buttons .btn:hover {
+    background-color: #2980b9;
+}
+
+.action-buttons .btn i {
+    margin-right: 10px;
+}
+
+/* Estilos para la actividad reciente */
+.list-group-item {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.list-group-item i {
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.list-group-item p {
+    margin: 0;
+}
+
+.list-group-item small {
+    color: #7f8c8d;
+}
+
+/* Estilos responsivos (si es necesario) */
+@media (max-width: 768px) {
+    .input-group {
+        width: 100%;
+    }
+}
