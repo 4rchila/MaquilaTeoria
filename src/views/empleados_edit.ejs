@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Empleado</title>
+    <style>
+       /* Ajustes generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Tarjeta con margen y separación */
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Espaciado en etiquetas */
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Espaciado en los inputs */
+.form-control, .form-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out;
+    margin-bottom: 15px;
+}
+
+/* Mejor organización de filas */
+.row {
+    display: flex;
+    gap: 25px; /* AUMENTADO para más separación entre columnas */
+    flex-wrap: wrap;
+}
+
+/* Columnas más espaciosas */
+.col-md-6 {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Espaciado en botones */
+.text-center {
+    margin-top: 20px;
+}
+
+/* Mejor aspecto para botones */
+.btn {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 5px;
+    text-decoration: none; /* Asegura que los enlaces no tengan subrayado */
+    display: inline-block;
+}
+
+/* Botón de Actualizar */
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Botón de Cancelar */
+.btn-secondary {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #c82333;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Modificar Empleado
+            </div>
+            <div class="card-body">
+                <% if (empleado) { %>
+                    <form action="/recursosHumanos/update/<%= empleado.id %>" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" id="nombre" value="<%= empleado.nombre %>" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="<%= empleado.fecha_nacimiento %>" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="numero_telefono">Número de Teléfono</label>
+                                    <input type="number" name="numero_telefono" id="numero_telefono" value="<%= empleado.numero_telefono %>" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="correo">Correo Electrónico</label>
+                                    <input type="email" name="correo" id="correo" value="<%= empleado.correo %>" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Numero_Id">Número de DPI</label>
+                                    <input type="number" name="Numero_Id" id="Numero_Id" value="<%= empleado.Numero_Id %>" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="cuenta_banco">Número de Cuenta Bancaria</label>
+                                    <input type="number" name="cuenta_banco" id="cuenta_banco" value="<%= empleado.cuenta_banco %>" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo de Cuenta</label>
+                            <select name="tipo_Cuenta" class="form-select" required>
+                                <option value="Ahorro" <%= empleado.tipo_Cuenta === 'Ahorro' ? 'selected' : '' %>>Ahorro</option>
+                                <option value="Monetario" <%= empleado.tipo_Cuenta === 'Monetario' ? 'selected' : '' %>>Monetario</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" name="direccion" id="direccion" value="<%= empleado.direccion %>" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="salario">Salario</label>
+                                    <input type="number" name="salario" id="salario" value="<%= empleado.salario %>" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fecha_contratacion">Fecha de Contratación</label>
+                            <input type="date" name="fecha_contratacion" id="fecha_contratacion" value="<%= empleado.fecha_contratacion %>" class="form-control" required>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success">Actualizar Empleado</button>
+                            <a href="/recursosHumanos" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                <% } else { %>
+                    <p class="text-danger text-center">Error: No se encontró el empleado.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

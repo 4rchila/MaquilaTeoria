@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Ventas y Facturación</title>
+    <title>Registro de Empleados</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f4f4f9;
+            background-color: #eef2f7;
             font-family: 'Roboto', sans-serif;
-            color: #343a40;
+            color: #333;
         }
         .container {
             margin-top: 50px;
@@ -20,165 +20,158 @@
             background: #fff;
         }
         .card-header {
-            background-color: #343a40;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             color: #fff;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            font-size: 1.2rem;
+            border-radius: 12px 12px 0 0;
+            padding: 15px;
         }
         .table-container {
             margin-top: 30px;
         }
         .table thead {
-            background-color: #6c757d;
+            background-color: #007bff;
             color: #fff;
         }
         .table th, .table td {
             text-align: center;
             vertical-align: middle;
+            padding: 12px;
+        }
+        .btn {
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-weight: bold;
         }
         .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
-            border-radius: 8px;
         }
         .btn-success {
             background-color: #28a745;
             border-color: #28a745;
-            border-radius: 8px;
         }
         .btn-danger {
             background-color: #dc3545;
             border-color: #dc3545;
-            border-radius: 8px;
         }
         .btn:hover {
-            opacity: 0.8;
-        }
-        .form-label {
-            font-weight: bold;
+            opacity: 0.85;
         }
         h1, h3 {
-            color: #495057;
-        }
-        .table td, .table th {
-            padding: 15px;
+            color: #0056b3;
         }
         .table tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
         .table tbody tr:nth-child(even) {
             background-color: #e9ecef;
-        }
-        .table-container .btn {
-            margin: 5px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 class="text-center text-primary">Registro de Empleados</h1>
+    <h1 class="text-center">Registro de Empleados</h1>
 
-    <!-- Formulario para Registro de Ventas -->
     <div class="card mt-4">
-        <div class="card-header">
-            <h4>Registrar Venta</h4>
-        </div>
+        <div class="card-header text-center">Registrar Nuevo Empleado</div>
         <div class="card-body">
-            <form action="/ventas/add" method="post" onsubmit="setFecha()">
+            <form action="/recursosHumanos/add" method="post">
+                <h3>Datos Personales</h3>
                 <div class="mb-3">
-                    <label for="texto" class="form-label">Nombre</label>
-                    <input type="text" name="nombre" id="cantidad" class="form-control" required>
+                    <label class="form-label">Nombre</label>
+                    <input type="text" name="nombre" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="texto" class="form-label">Fecha de nacimiento</label>
-                    <input type="date" name="fecha_nacimiento" id="cantidad" class="form-control" required>
+                    <label class="form-label">Fecha de nacimiento</label>
+                    <input type="date" name="fecha_nacimiento" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <div class="mb-3">
-                        <label for="numero_telefono" class="form-label">Numero de telefono</label>
-                        <input type="number" name="numero_telefono" id="descripcion" class="form-control" rows="1" required>
-                    </div>
-                    <div class="mb-3">
-                    <label for="cuenta_banco" class="form-label">Numero de cuenta de banco</label>
-                    <input type="number" name="cuenta_banco" id="cantidadPagar" class="form-control" required>
+                    <label class="form-label">Número de teléfono</label>
+                    <input type="tel" name="numero_telefono" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="correo" class="form-label">Correo electonico</label>
-                    <input type="text" name="correo" id="impuesto" class="form-control" required>
+                    <label class="form-label">Correo electrónico</label>
+                    <input type="email" name="correo" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="direccion" class="form-label">Direccion</label>
-                    <input type="text" name="direccion" id="impuesto" class="form-control" required>
+                    <label class="form-label">Número de DPI</label>
+                    <input type="number" name="Numero_Id" class="form-control" required>
+                </div>
+                
+                <h3>Vinculación</h3>
+                <div class="mb-3">
+                    <label class="form-label">Número de cuenta bancaria</label>
+                    <input type="number" name="cuenta_banco" class="form-control" required>
                 </div>
                 <div class="mb-3">
-                    <label for="direccion" class="form-label">Direccion</label>
-                    <input type="text" name="direccion" id="impuesto" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="salario" class="form-label">Direccion</label>
-                    <input type="number" name="salario" id="impuesto" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="fecha_contratacion" class="form-label">Fecha de contratación</label>
-                    <input type="date" name="fecha_contratacion" id="impuesto" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="tipo_Cuenta" class="form-label"></label>
-                    <select name="tipo_Cuenta" id="tipo_Cuenta" class="form-select" required>
+                    <label class="form-label">Tipo de cuenta</label>
+                    <select name="tipo_Cuenta" class="form-select" required>
                         <option value="ahorro">Ahorro</option>
                         <option value="monetario">Monetario</option>
                     </select>
                 </div>
-                <!-- Campo oculto para la fecha -->
-                <input type="hidden" name="empleados" id="empleados">
+                <div class="mb-3">
+                    <label class="form-label">Dirección</label>
+                    <input type="text" name="direccion" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Salario</label>
+                    <input type="number" name="salario" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Fecha de contratación</label>
+                    <input type="date" name="fecha_contratacion" class="form-control" required>
+                </div>
                 <button type="submit" class="btn btn-success">Registrar Empleado</button>
             </form>
         </div>
     </div>
 
-    <!-- Tabla de ventas -->
     <div class="table-container">
-        <h3 class="text-center">Historial de Ventas</h3>
+        <h3 class="text-center">Lista de Empleados</h3>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#Factura</th>
-                        <th>Fecha</th>
-                        <th>Nombre del cliente</th>
-                        <th>Nit</th>
-                        <th>Descripción</th>
-                        <th>Cantidad</th>
-                        <th>Método de Venta</th>
-                        <th>Cantidad a Pagar</th>
-                        <th>Impuesto</th>
-                        <th>Total</th>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                        <th>DPI</th>
+                        <th>Cuenta Bancaria</th>
+                        <th>Tipo Cuenta</th>
+                        <th>Dirección</th>
+                        <th>Salario</th>
+                        <th>Fecha Contratación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% if (data.length > 0) { %>
-                        <% data.forEach((venta, index) => { %>
+                        <% data.forEach((empleado, index) => { %>
                             <tr>
                                 <td><%= index + 1 %></td>
-                                <td><%= venta.fecha || 'No disponible' %></td>
-                                <td><%= venta.nombreCliente %></td>
-                                <td><%= venta.nit %></td>
-                                <td><%= venta.descripcion %></td>
-                                <td><%= venta.cantidadDeProducto %></td>
-                                <td><%= venta.metodo %></td>
-                                <td><%= venta.cantidadPagar %></td>
-                                <td><%= venta.impuesto %></td>
-                                <td><%= (parseFloat(venta.cantidadPagar) + parseFloat(venta.impuesto)).toFixed(2) %></td>
+                                <td><%= empleado.nombre %></td>
+                                <td><%= empleado.fecha_nacimiento %></td>
+                                <td><%= empleado.numero_telefono %></td>
+                                <td><%= empleado.correo %></td>
+                                <td><%= empleado.Numero_Id %></td>
+                                <td><%= empleado.cuenta_banco %></td>
+                                <td><%= empleado.tipo_Cuenta %></td>
+                                <td><%= empleado.direccion %></td>
+                                <td><%= empleado.salario %></td>
+                                <td><%= empleado.fecha_contratacion %></td>
                                 <td>
-                                    <a href="/ventas/delete/<%= venta.id %>" class="btn btn-danger btn-sm">Eliminar</a>
-                                    <a href="/ventas/factura/<%= venta.id %>" class="btn btn-primary btn-sm">Ver Factura</a>
+                                    <a href="/recursosHumanos/delete/<%= empleado.id %>" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <a href="/recursosHumanos/update/<%= empleado.id %>" class="btn btn-primary btn-sm">Actualizar</a>
                                 </td>
                             </tr>
                         <% }) %>
                     <% } else { %>
-                        <tr><td colspan="9" class="text-center">No hay datos disponibles</td></tr>
+                        <tr><td colspan="12" class="text-center">No hay empleados registrados</td></tr>
                     <% } %>
                 </tbody>
             </table>
@@ -186,17 +179,5 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    function setFecha() {
-        const fecha = new Date();
-        const fechaFormateada = fecha.toISOString().split('T')[0]; 
-        document.getElementById('fechaVenta').value = fechaFormateada;
-    }
-</script>
-
 </body>
 </html>
-
-
