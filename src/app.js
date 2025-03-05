@@ -16,8 +16,8 @@ const recursosHumanosRouters = require("./routers/recursosHumanos")
 
 // Configuración del servidor
 app.set('port', process.env.PORT || 3000)
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views/InicioEstilo'))
 // Middlewares
 app.use(morgan('dev'))
 app.use(myConnection(mysql2, {
@@ -31,7 +31,6 @@ app.use(express.urlencoded({ extended: false }))
 
 // Servir archivos estáticos desde "src/public"
 app.use(express.static(path.join(__dirname, 'src/public')))
-app.set('view engine', 'ejs');
 
 // Rutas
 app.use('/', loginRouters)
@@ -44,5 +43,3 @@ app.use('/recursosHumanos', recursosHumanosRouters)
 app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'))
 })
-
-console.log("Iniciando servidor...");
