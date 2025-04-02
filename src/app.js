@@ -12,7 +12,7 @@ const customerRouters = require("./routers/customers")
 const homeRouters = require("./routers/home")
 const ventasRouters = require("./routers/ventas")
 const recursosHumanosRouters = require("./routers/recursosHumanos")
-
+const finanzasRouters = require("./routers/finanzas")
 
 // Configuración del servidor
 app.set('port', process.env.PORT || 3000)
@@ -38,6 +38,7 @@ app.use('/home', homeRouters)
 app.use('/inventario', customerRouters)  
 app.use('/ventas', ventasRouters)
 app.use('/recursosHumanos', recursosHumanosRouters)
+app.use('/finanzas', finanzasRouters)
 
 // Iniciando el servidor
 app.listen(app.get('port'), () => {
