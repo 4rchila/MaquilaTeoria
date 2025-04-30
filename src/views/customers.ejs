@@ -1,105 +1,224 @@
-<%- include('partials/_header') %>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maquila | Inventario de Productos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
 
-<div class="container mt-5">
-    <!-- Título y Mensaje de Datos -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <h2 class="text-center text-primary">Product Inventory</h2>
-            <p class="text-center text-muted"><%= data.length > 0 ? 'Showing available products' : 'No data available' %></p>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a1d56, #0d1b2a);
+      color: #343a40;
+    }
+
+    header {
+      background: linear-gradient(to right, #1a237e, #3949ab);
+      padding: 20px 0;
+      text-align: center;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .table-section {
+      background: linear-gradient(135deg, #f3f4f7, #ffffff);
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      padding: 25px;
+    }
+
+    .table thead {
+      background-color: #1a237e;
+      color: white;
+    }
+
+    .table td, .table th {
+      vertical-align: middle;
+    }
+
+    .btn-success {
+      background: linear-gradient(to right, #2e7d32, #388e3c);
+      border: none;
+    }
+
+    .btn-info {
+      background: linear-gradient(to right, #039be5, #0288d1);
+      border: none;
+    }
+
+    .btn-danger {
+      background: linear-gradient(to right, #d32f2f, #c62828);
+      border: none;
+    }
+
+    .card {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+
+    .card-header {
+      background: linear-gradient(to right, #3949ab, #5c6bc0);
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      color: white;
+    }
+
+    .form-control:focus {
+      border-color: #1a237e;
+      box-shadow: 0 0 5px rgba(26, 35, 126, 0.5);
+    }
+
+    .hero-section {
+      background: linear-gradient(to right, #1a237e, #3949ab);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 16px;
+      margin: 60px 0 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .hero-section img {
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .content-section {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #ffffff, #f8f9fb);
+      border-top: 5px solid #1a237e;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>Inventario de Productos</h1>
+  <p class="lead mb-0"><%= data.length > 0 ? 'Mostrando productos disponibles' : 'No hay datos disponibles' %></p>
+</header>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-8 mb-4">
+      <div class="table-section">
+        <h3 class="section-title">Lista de Productos</h3>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>ID del Producto</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Unidad</th>
+                <th>Proveedor</th>
+                <th>Código QR</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (data.length > 0) { %>
+                <% for (var i = 0; i < data.length; i++) { %>
+                  <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= data[i].idProduct %></td>
+                    <td><%= data[i].name %></td>
+                    <td><%= data[i].description %></td>
+                    <td><%= data[i].category %></td>
+                    <td><%= data[i].unitof %></td>
+                    <td><%= data[i].supplier %></td>
+                    <td><%= data[i].barcode %></td>
+                    <td>
+                      <a href="/inventario/delete/<%= data[i].id %>" class="btn btn-danger btn-sm">Eliminar</a>
+                      <a href="/inventario/update/<%= data[i].id %>" class="btn btn-info btn-sm">Actualizar</a>
+                    </td>
+                  </tr>
+                <% } %>
+              <% } else { %>
+                <tr><td colspan="9" class="text-center">No hay datos disponibles</td></tr>
+              <% } %>
+            </tbody>
+          </table>
         </div>
+      </div>
     </div>
 
-    <!-- Tabla de Productos -->
-    <div class="row">
-        <div class="col-md-8">
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>No.</th>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>Unit of Measurement</th>
-                            <th>Supplier</th>
-                            <th>QR Code</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% if (data.length > 0) { %>
-                          <% for (var i = 0; i < data.length; i++) { %>
-                            <tr>
-                              <td><%= i + 1 %></td>
-                              <td><%= data[i].idProduct %></td>
-                              <td><%= data[i].name %></td>
-                              <td><%= data[i].description %></td>
-                              <td><%= data[i].category %></td>
-                              <td><%= data[i].unitof %></td>
-                              <td><%= data[i].supplier %></td>
-                              <td><%= data[i].barcode %></td>
-                              <td>
-                                <a href="/inventario/delete/<%= data[i].id %>" class="btn btn-danger btn-sm">Delete</a>
-                                <a href="/inventario/update/<%= data[i].id %>" class="btn btn-info btn-sm">Update</a>
-                              </td>
-                            </tr>
-                          <% } %>
-                        <% } else { %>
-                          <tr><td colspan="9" class="text-center">No data available</td></tr>
-                        <% } %>
-                    </tbody>
-                </table>
-            </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Agregar Nuevo Producto</h5>
         </div>
-
-        <!-- Formulario de Agregar Producto -->
-        <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">Add New Product</h4>
-                </div>
-                <div class="card-body">
-                    <form action="/inventario/add" method="post">
-                        <div class="form-group">
-                            <label for="idProduct">Product ID</label>
-                            <input type="text" name="idProduct" id="idProduct" placeholder="Enter Product ID" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Product Name</label>
-                            <input type="text" name="name" id="name" placeholder="Enter Product Name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" name="description" id="description" placeholder="Enter Description" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="category">Category</label>
-                            <input type="text" name="category" id="category" placeholder="Enter Category" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="unitof">Unit of Measurement</label>
-                            <input type="text" name="unitof" id="unitof" placeholder="Enter Unit of Measurement" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="supplier">Supplier</label>
-                            <input type="text" name="supplier" id="supplier" placeholder="Enter Supplier" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="barcode">QR Code</label>
-                            <input type="text" name="barcode" id="barcode" placeholder="Enter QR Code" class="form-control" required>
-                        </div>
-                        
-                        <!-- Espacio adicional para el botón -->
-                        <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-success btn-block">Save to Inventory</button>
-                        </div>
-                    </form>
-                </div>
+        <div class="card-body">
+          <form action="/inventario/add" method="post">
+            <div class="mb-3">
+              <label for="idProduct" class="form-label">ID del Producto</label>
+              <input type="text" name="idProduct" id="idProduct" class="form-control" required>
             </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre del Producto</label>
+              <input type="text" name="name" id="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <input type="text" name="description" id="description" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Categoría</label>
+              <input type="text" name="category" id="category" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="unitof" class="form-label">Unidad de Medida</label>
+              <input type="text" name="unitof" id="unitof" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="supplier" class="form-label">Proveedor</label>
+              <input type="text" name="supplier" id="supplier" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="barcode" class="form-label">Código QR</label>
+              <input type="text" name="barcode" id="barcode" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Guardar en Inventario</button>
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<%- include('partials/_footer') %>
+<section class="hero-section">
+  <div class="container">
+    <p class="lead">Tu socio confiable en la industria de maquila</p>
+    <img src="/Imagen1.png" alt="Imagen de Maquila" class="img-fluid">
+  </div>
+</section>
 
+<section class="content-section">
+  <div class="container">
+    <h2 class="text-center mb-4">Acerca de Maquila</h2>
+    <p class="text-center px-md-5">
+      Ofrecemos soluciones de vanguardia para optimizar el proceso de maquila.
+      Nuestro enfoque está en la calidad, eficiencia y satisfacción del cliente.
+      Únete a nosotros para ampliar tu capacidad de producción con los mejores servicios de la industria.
+    </p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

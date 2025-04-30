@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Empleado</title>
     <style>
-       /* Ajustes generales */
+       /* Ajustes generales con fondo degradado azul suave a navy */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f6f9;
+    background: linear-gradient(135deg, #0a1d56, #0d1b2a);
     color: #333;
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ body {
     padding: 20px;
 }
 
-/* Tarjeta con margen y separación */
+/* Tarjeta elegante con sombras */
 .card {
     background: white;
     border-radius: 12px;
@@ -34,7 +34,7 @@ body {
     padding: 20px;
 }
 
-/* Espaciado en etiquetas */
+/* Títulos en etiquetas */
 .form-group label {
     font-weight: bold;
     display: block;
@@ -42,7 +42,7 @@ body {
     color: #555;
 }
 
-/* Espaciado en los inputs */
+/* Inputs uniformes */
 .form-control, .form-select {
     width: 100%;
     padding: 12px;
@@ -53,14 +53,14 @@ body {
     margin-bottom: 15px;
 }
 
-/* Mejor organización de filas */
+/* Organización de filas */
 .row {
     display: flex;
-    gap: 25px; /* AUMENTADO para más separación entre columnas */
+    gap: 25px; /* Espacio generoso entre columnas */
     flex-wrap: wrap;
 }
 
-/* Columnas más espaciosas */
+/* Columnas adaptables */
 .col-md-6 {
     flex: 1;
     min-width: 280px;
@@ -71,7 +71,7 @@ body {
     margin-top: 20px;
 }
 
-/* Mejor aspecto para botones */
+/* Botones modernos */
 .btn {
     font-size: 16px;
     font-weight: bold;
@@ -81,31 +81,29 @@ body {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     margin: 5px;
-    text-decoration: none; /* Asegura que los enlaces no tengan subrayado */
+    text-decoration: none;
     display: inline-block;
 }
 
-/* Botón de Actualizar */
+/* Botón de Actualizar con verde clásico */
 .btn-success {
     background-color: #28a745;
     color: white;
 }
-
 .btn-success:hover {
     background-color: #218838;
 }
 
-/* Botón de Cancelar */
+/* Botón de Cancelar con rojo elegante */
 .btn-secondary {
     background-color: #dc3545;
     color: white;
 }
-
 .btn-secondary:hover {
     background-color: #c82333;
 }
 
-/* Responsividad */
+/* Diseño adaptable */
 @media (max-width: 768px) {
     .container {
         padding: 10px;

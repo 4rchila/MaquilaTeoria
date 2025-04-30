@@ -30,7 +30,7 @@ app.use(myConnection(mysql2, {
 app.use(express.urlencoded({ extended: false }))
 
 // Servir archivos estáticos desde "src/public"
-app.use(express.static(path.join(__dirname, 'src/public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Rutas
 app.use('/', loginRouters)

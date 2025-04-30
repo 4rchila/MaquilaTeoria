@@ -7,264 +7,277 @@
     <link rel="stylesheet" href="/css/finanzas.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* Estilos generales */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f6fa;
-}
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1d56, #0d1b2a);
+        }
 
-.finanzas-container {
-    display: flex;
-    min-height: 100vh;
-}
+        .finanzas-container {
+            display: flex;
+            min-height: 100vh;
+        }
 
-/* Sidebar */
-.finanzas-sidebar {
-    width: 300px;
-    background-color: #34495e;
-    color: white;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
+        .finanzas-sidebar {
+            width: 300px;
+            background-color: #112b4b;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+            border-radius: 12px 0 0 12px;
+        }
 
-.finanzas-sidebar h2 {
-    margin-top: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #2c3e50;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .finanzas-sidebar h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3em;
+            background-color: #1a3c5e;
+            padding: 10px;
+            border-radius: 12px;
+        }
 
-.finanzas-sidebar .form-group {
-    margin-bottom: 15px;
-}
+        .finanzas-sidebar form {
+            background: linear-gradient(180deg, #1a3c5e, #0f2c49);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
 
-.finanzas-sidebar .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-.finanzas-sidebar .form-group input,
-.finanzas-sidebar .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #2c3e50;
-    border-radius: 4px;
-    background-color: #2c3e50;
-    color: white;
-}
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #fff;
+        }
 
-.finanzas-sidebar .submit-btn {
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-}
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background-color: #163955;
+            color: #fff;
+        }
 
-.finanzas-sidebar .submit-btn:hover {
-    background-color: #2ecc71;
-}
+        .form-group input::placeholder {
+            color: #cfd8dc;
+        }
 
-.sidebar-resumen {
-    margin-top: 30px;
-    padding: 15px;
-    background-color: #2c3e50;
-    border-radius: 8px;
-    border: 1px solid #3d566e;
-}
+        .submit-btn {
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.sidebar-resumen h3 {
-    border-bottom: 1px solid #3d566e;
-    padding-bottom: 10px;
-    margin-top: 0;
-}
+        .submit-btn:hover {
+            background-color: #2ecc71;
+        }
 
-.sidebar-resumen p {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 10px 0;
-}
+        .sidebar-resumen {
+            margin-top: 30px;
+            padding: 20px;
+            background: #132c44;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
 
-.icon {
-    font-size: 1.1em;
-}
+        .sidebar-resumen h3 {
+            margin-top: 0;
+            color: #fff;
+            margin-bottom: 10px;
+        }
 
-.icon.ingreso {
-    color: #2ecc71;
-}
+        .sidebar-resumen p {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 1em;
+            margin: 8px 0;
+        }
 
-.icon.gasto {
-    color: #e74c3c;
-}
+        .icon.ingreso { color: #2ecc71; }
+        .icon.gasto { color: #e74c3c; }
 
-/* Contenido principal */
-.finanzas-main {
-    flex: 1;
-    padding: 30px;
-    background-color: #f5f6fa;
-}
+        /* CONTENIDO PRINCIPAL */
+        .finanzas-main {
+            flex: 1;
+            padding: 30px;
+            background-color: #0d1b2a;
+        }
 
-.finanzas-main h1 {
-    color: #2c3e50;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .finanzas-main h1 {
+            color: #2c3e50;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
 
-.resumen-financiero {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-    gap: 15px;
-}
+        .resumen-financiero {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-.resumen-card {
-    flex: 1;
-    padding: 20px;
-    border-radius: 8px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        .resumen-card {
+            flex: 1 1 200px;
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
 
-.resumen-card h3 {
-    margin-top: 0;
-    color: #ffffff;
-}
+        .resumen-card h3 {
+            margin-top: 0;
+            color: white;
+        }
 
+        .resumen-card.ingreso {
+            background: linear-gradient(45deg, #1abc9c, #16a085);
+            color: white;
+        }
 
-.resumen-card.ingreso {
-    color: #ffffff;
-    background-color: #27ae60;
-}
+        .resumen-card.gasto {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+        }
 
-.resumen-card.gasto {
-    color: #ffffff;
-    background-color: #e74c3c;
-}
+        .resumen-card.balance {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+        }
 
-.resumen-card.balance {
-    color: #ffffff;
-    background-color: #3498db;
-}
+        .resumen-card.impuesto {
+            background: linear-gradient(45deg, #f39c12, #f1c40f);
+            color: white;
+        }
 
-.filtros {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
+        .filtros {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
 
-.filtros a {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
+        .filtros a {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
 
-.filtros a.active {
-    background-color: #2980b9;
-    font-weight: bold;
-}
+        .filtros a.active {
+            background-color: #2980b9;
+            font-weight: bold;
+        }
 
-.filtros a:hover {
-    background-color: #2980b9;
-}
+        .filtros a:hover {
+            background-color: #2980b9;
+        }
 
-.transacciones-recientes {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        .transacciones-recientes {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
-.transacciones-recientes h2 {
-    color: #2c3e50;
-    margin-top: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .transacciones-recientes h2 {
+            color: #2c3e50;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.no-data {
-    text-align: center;
-    color: #7f8c8d;
-    padding: 20px;
-}
+        .no-data {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 20px;
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ecf0f1;
-}
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
 
-th {
-    background-color: #34495e;
-    color: white;
-}
+        th {
+            background-color: #34495e;
+            color: white;
+        }
 
-tr:hover {
-    background-color: #f5f6fa;
-}
+        tr:hover {
+            background-color: #f5f6fa;
+        }
 
-.ingreso {
-    color: #27ae60;
-    font-weight: bold;
-}
+        .ingreso {
+            color: #27ae60;
+            font-weight: bold;
+        }
 
-.gasto {
-    color: #e74c3c;
-    font-weight: bold;
-}
+        .gasto {
+            color: #e74c3c;
+            font-weight: bold;
+        }
 
-.delete-btn {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.delete-btn:hover {
-    background-color: #c0392b;
-}
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .finanzas-container {
-        flex-direction: column;
-    }
-    
-    .finanzas-sidebar {
-        width: auto;
-    }
-    
-    .resumen-financiero {
-        flex-direction: column;
-    }
-}
+        @media (max-width: 768px) {
+            .finanzas-container {
+                flex-direction: column;
+            }
+
+            .finanzas-sidebar {
+                width: auto;
+                border-radius: 0;
+            }
+
+            .resumen-financiero {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -278,22 +291,18 @@ tr:hover {
                     <label for="concepto">Concepto:</label>
                     <input type="text" id="concepto" name="concepto" required>
                 </div>
-                
                 <div class="form-group">
-                    <label for="monto">Descripcion</label>
-                    <input type="text" id="descripcion" name="descripcion" min="0" step="0.01" required>
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion" name="descripcion" required>
                 </div>
-
                 <div class="form-group">
                     <label for="monto">Monto:</label>
                     <input type="number" id="monto" name="monto" min="0" step="0.01" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="fecha">Fecha:</label>
                     <input type="date" id="fecha" name="fecha" required>
                 </div>
-                
                 <button type="submit" class="submit-btn">Registrar</button>
             </form>
             
@@ -304,7 +313,7 @@ tr:hover {
                 <p>Balance: $<%= resumen.balance.toLocaleString() %></p>
             </div>
         </div>
-        
+
         <!-- Contenido principal -->
         <div class="finanzas-main">
             <h1>Dashboard Financiero</h1>
@@ -322,22 +331,21 @@ tr:hover {
                     <h3>Utilidades</h3>
                     <p>$<%= resumen.balance.toLocaleString() %></p>
                 </div>
-                <div class="resumen-card balance">
+                <div class="resumen-card impuesto">
                     <h3>Impuesto a pagar</h3>
-                    <p>Pequeño contribuyente 0.5</p>
-                    <p id="impuesto-pago">75</p>
+                    <p>Pequeño contribuyente 5%</p>
+                    <p id="impuesto-pago">0</p>
                 </div>
             </div>
-            
+
             <div class="filtros">
                 <a href="/finanzas?filtro=todos" class="<%= filtro === 'todos' ? 'active' : '' %>">Todos</a>
                 <a href="/finanzas?filtro=ingreso" class="<%= filtro === 'ingreso' ? 'active' : '' %>">Ingresos</a>
                 <a href="/finanzas?filtro=gasto" class="<%= filtro === 'gasto' ? 'active' : '' %>">Gastos</a>
             </div>
-            
+
             <div class="transacciones-recientes">
                 <h2><i class="fas fa-history"></i> Últimas Transacciones</h2>
-                
                 <% if (transacciones.length === 0) { %>
                     <p class="no-data">No hay transacciones registradas</p>
                 <% } else { %>
@@ -371,12 +379,11 @@ tr:hover {
             </div>
         </div>
     </div>
+
+    <script>
+        const resumenIngresos =  resumen.ingresos ;
+        const impuesto = resumenIngresos * 0.05;
+        document.getElementById("impuesto-pago").textContent = "$" + impuesto.toFixed(2);
+    </script>
 </body>
-<script> 
-var ingresos = int(resumen.ingresos.toLocaleString())
-var suma = 0.05 * ingresos
-var texto = suma.toString()
-console.log(texto)
-document.getElementById("impuesto-pago").innerHTML = suma
-</script>
 </html>
