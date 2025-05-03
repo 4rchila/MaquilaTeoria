@@ -38,7 +38,13 @@ CREATE TABLE empleados (
     fecha_contratacion DATE
 );
 
+-----------------------
 
+CREATE TABLE usuarios (
+  id  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre_usuario VARCHAR(100) NOT NULL,
+  pasword varchar(100) NOT NULL
+);
 --------
 SHOW TABLES;
 

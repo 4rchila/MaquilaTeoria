@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0a0f3d, #243b55);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="pasword"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #1c1f4a;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #384173;
+    }
+
+    .error {
+      color: #ff9999;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <% if (typeof error !== 'undefined') { %>
+      <div style="color: red;"><%= error %></div>
+    <% } %>
+    
+    <form action="/add" method="POST">
+      <input type="text" name="nombre_usuario" placeholder="Usuario" required />
+      <input type="pasword" name="pasword" placeholder="Contraseña" autocomplete="off" required />
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+  </div>
+</body>
+</html>
