@@ -20,18 +20,21 @@ recursosHumanosController.list = (req, res) => {
 
 recursosHumanosController.save = (req, res) => {
     const data = req.body;
+    console.log("Datos recibidos:", data);
+
     req.getConnection((err, conn) => {
         if (err) throw err;
 
         conn.query('INSERT INTO empleados SET ?', [data], (err) => {
             if (err) {
-                console.error(err);
+                console.error("Error al guardar el empleado:", err); //Muestra el error exacto
                 return res.status(500).send("Error al guardar el empleado");
             }
             res.redirect('/recursosHumanos');
         });
     });
 };
+
 
 recursosHumanosController.edit = (req, res) => {
     const { id } = req.params;

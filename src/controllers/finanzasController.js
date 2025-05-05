@@ -45,7 +45,7 @@ finanzasController.list = (req, res) => {
                 // Consulta transacciones ingresos
                 if (filtro === 'todos' || filtro === 'ingreso') {
                     connection.query(`
-                        SELECT id, descripcion AS concepto, cantidadPagar AS monto, fechaVenta AS fecha 
+                        SELECT id, description AS concepto, amount AS monto, fechaVenta AS fecha 
                         FROM FACTURA 
                         ORDER BY fechaVenta DESC LIMIT 10
                     `, (err, ingresos) => {

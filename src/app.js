@@ -23,19 +23,20 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(myConnection(mysql2, {
     host: 'localhost',
-    user: 'root',
-    password: 'root',
+    user: 'pablo',
+    password: 'T0by021023',
     port: 3306,
-    database: 'maquilasistemamysql'
+    database: 'maquilaSistemaMysql'
 }, 'single'));
 app.use(express.urlencoded({ extended: false }));
 // Servir archivos estáticos desde "src/public"
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser())
+
 // Rutas
 app.use('/', authRouter);
 app.use('/home', verificarToken ,homeRouters);
-app.use('/inventario', verificarToken,customerRouters);
+app.use('/customers', verificarToken,customerRouters);
 app.use('/ventas', verificarToken,ventasRouters);
 app.use('/recursosHumanos', verificarToken,recursosHumanosRouters);
 app.use('/finanzas', verificarToken, finanzasRouters);

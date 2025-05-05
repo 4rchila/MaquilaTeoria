@@ -50,3 +50,5 @@ SHOW TABLES;
 
 -- to describe table
 DESCRIBE customer;
+
+
